@@ -1,0 +1,33 @@
+Authentication:
+  ✔ Authentication reducer setup. @done(19-02-26 00:27)
+  ✔ Store the user info in the authentication state. @done(19-02-26 18:11)
+  ✔ Store the UID on AsyncStorage. @done(19-02-27 00:58)
+  ✔ AuthenticationLoading component. @done(19-02-27 00:58)
+  ✔ Authentication Loading UI. @done(19-02-27 00:58)
+  ✔ Login Page UI. @done(19-02-27 15:21)
+    ✔ Add icons for Google and Facebook Button. @done(19-02-27 13:48)
+    ✔ Add Loading Component for when the user is trying to login. @done(19-02-27 15:21)
+  ☐ Logout functionality.
+
+Seeding:
+  ✔ Make a new Cloud callable function that uses Faker to seed data. @done (19-03-03 15:33)
+  ✔ Make a new Node application that calls that function. @done (19-03-03 15:33)
+     ✔ Must include a refresh flag. This essentially deletes all the data on the database and seeds a new one. @done (19-03-03 15:33)
+
+Home page:
+  ✔ Bottom Tabs setup. @done(19-02-27 00:58)
+  ✔ Bottom Tabs icons. @done(19-02-27 15:17)
+  ✔ Google Maps setup. @done(19-03-01 01:00)
+  ✔ Profile page setup. @done(19-03-01 01:17)
+    https://www.behance.net/gallery/63476575/Profile-Page-UI-Design-Concept
+    ✔ Add a Upgrade to homeowner if user is not a homeowner. @done(19-03-01 01:17)
+    ✔ If he's a homeowner add a properties tab and remove homeowner upgrade button. @done(19-02-27 21:00)
+  ✔ Upgrade Form UI @done(19-03-01 02:21)
+    https://www.behance.net/gallery/59122599/Purple-Pay-Mobile-and-Web-UI
+  ✔ Transfer the Upgrade flow to another stack component. @done(19-03-01 02:21)
+  ✔ Update the isHomeowner flag to tbe true on successful subscription. @done(19-03-01 02:21)
+  ✔ Disable button when submitting noc upgrade form or just add a modal. @done(19-03-01 02:21)
+
+Redux setup:
+  ✔ General Redux setup @done(19-02-26 00:26)
+  ✔ Setup root reducer. @done(19-02-26 00:26)

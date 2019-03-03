@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "565515368984",
+    "firebase_url": "https://instalodge-5b480.firebaseio.com",
+    "project_id": "instalodge-5b480",
+    "storage_bucket": "instalodge-5b480.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565515368984:android:a552a649ead7baf3",
+        "android_client_info": {
+          "package_name": "com.instalodge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565515368984-b6ifs9eppgrsvnkf0a11c7jl5crloiq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.instalodge",
+            "certificate_hash": "cd306cd36473a8a1a0258089426b16056d158365"
+          }
+        },
+        {
+          "client_id": "565515368984-30u8r4ql36q30iae5qe6qb3gm48dufrv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.instalodge",
+            "certificate_hash": "a7e0ea040d3d35b328ead549b61023b99aa8f11f"
+          }
+        },
+        {
+          "client_id": "565515368984-g6208dgvd80qu4ftj0tk9id8efvpldd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQcCL0haEzmeridZVvnFbYu-c-BWSuMVs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565515368984-g11ldfju9tqfudf1ubc9k1hu95g1l2f6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565515368984:android:9b070a87fea6a143",
+        "android_client_info": {
+          "package_name": "com.instalodge.app.instalodge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565515368984-uhbh23v9d9ras4e8sj4u4i3is0v5iacj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.instalodge.app.instalodge",
+            "certificate_hash": "f6f805e5e1f092424a00e8bb2b793ec736ecd400"
+          }
+        },
+        {
+          "client_id": "565515368984-g6208dgvd80qu4ftj0tk9id8efvpldd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQcCL0haEzmeridZVvnFbYu-c-BWSuMVs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565515368984-g11ldfju9tqfudf1ubc9k1hu95g1l2f6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

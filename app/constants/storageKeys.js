@@ -1,0 +1,1 @@
+export const USER_UID_STORAGE_KEY = '@Instalodge:UID';
