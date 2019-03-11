@@ -1,30 +1,28 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
 import { Container, Text, Content, Icon } from 'native-base';
 
-import GoogleMap from '../../map/GoogleMap';
-
-export default class MapScreen extends Component {
+export default class HomeScreen extends Component {
   static navigationOptions = {
     header: null,
     tabBarIcon: ({ focused, horizontal, tintColor}) => {
       return (
         <Icon
-          name='md-compass'
+          name='md-home'
           style={{ color: tintColor }}
           vertical={!horizontal}
         />
       );
     }
-  };
+  }
+
 
   render () {
     return (
       <Container>
         <Content
-          contentContainerStyle={{ flex: 1, ...StyleSheet.absoluteFillObject }}
+          contentContainerStyle={{ flex: 1 }}
         >
-          <GoogleMap />
+          <Text>This is the home screen.</Text>
         </Content>
       </Container>
     );

@@ -5,15 +5,15 @@ import { createStackNavigator, createAppContainer, createSwitchNavigator, create
 
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
-import SplashScreen from './app/components/screens/SplashScreen';
+import SplashScreen from './app/screens/SplashScreen';
+import HomeScreen from './app/screens/HomeScreen';
 import SignInScreen from './app/components/screens/auth/SignInScreen';
 import store from './app/store'
-import MapScreen from './app/components/screens/home/MapScreen';
 import ProfileScreen from './app/components/screens/home/ProfileScreen';
 import ProfileUpgrade from './app/components/screens/home/ProfileUpgrade';
 import SearchScreen from './app/components/screens/home/SearchScreen';
-import HomeOwnerProperties from './app/components/screens/homeowner/HomeOwnerProperties';
 import UpgradeThankYou from './app/components/screens/upgrade/UpgradeThankYou';
+import PropertyFilterModal from './app/components/Property/PropertyFilterModal';
 
 const SplashScreenStack = createStackNavigator({
   Splash: SplashScreen
@@ -21,22 +21,6 @@ const SplashScreenStack = createStackNavigator({
 
 const AuthStack = createStackNavigator({
   SignIn: SignInScreen,
-} );
-
-const HomeOwnerProfileStack = createStackNavigator({
-  Properties: HomeOwnerProperties,
-}, {
-  navigationOptions: () => ({
-    tabBarIcon: ({ focused, horizontal, tintColor}) => {
-      return (
-        <Icon
-          name='md-home'
-          style={{ color: tintColor }}
-          vertical={!horizontal}
-        />
-      );
-    }
-  })
 } );
 
 const ProfileStack = createStackNavigator({
@@ -57,23 +41,36 @@ const ProfileStack = createStackNavigator({
 }
 )
 
+const NewsFeedStack = createStackNavigator({
+  NewsFeedHome: HomeScreen,
+  Filters: PropertyFilterModal,
+},{
+  mode: 'modal',
+  headerMode: 'none',
+  navigationOptions: () => ({
+    tabBarIcon: ({ focused, horizontal, tintColor}) => {
+      return (
+        <Icon
+          name='home'
+          style={{ color: tintColor }}
+          vertical={!horizontal}
+        />
+      );
+    }
+  })
+})
+
 const defaultNavigationTabs = {
-  Map: MapScreen,
+  NewsFeed: NewsFeedStack,
   Search: SearchScreen,
   Profile: ProfileStack,
 };
 
 
 const HomeBottomTab = createBottomTabNavigator(defaultNavigationTabs, {
-  initialRouteName: 'Map',
+  initialRouteName: 'NewsFeed',
 });
 
-const HomeBottomHomeOwnerTab = createBottomTabNavigator({
-  ...defaultNavigationTabs,
-  Properties: HomeOwnerProfileStack,
-}, {
-  initialRouteName: 'Map',
-});
 
 const UpgradeStack = createStackNavigator({
   UpgradeProfile: ProfileUpgrade,
@@ -87,7 +84,6 @@ const AppContainer = createAppContainer(createSwitchNavigator(
     Splash: SplashScreenStack,
     Auth: AuthStack,
     Home: HomeBottomTab,
-    HomeOwner: HomeBottomHomeOwnerTab,
     Upgrade: UpgradeStack,
   },
   {

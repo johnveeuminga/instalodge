@@ -3,8 +3,8 @@ import { ActivityIndicator, Image } from 'react-native'
 import { Container, Content, Text } from 'native-base';
 import { connect } from 'react-redux';
 
-import { LOGIN } from '../../constants/actionTypes';
-import { getStoredUserUID, getUserFromUID } from '../../auth';
+import { LOGIN } from '../constants/actionTypes';
+import { getStoredUserUID, getUserFromUID } from '../auth';
 
 class SplashScreen extends Component {
   static navigationOptions = {
@@ -31,7 +31,7 @@ class SplashScreen extends Component {
       <Container>
         <Content contentContainerStyle={{ justifyContent: 'center', alignItems: 'center', flex: 1, width: '100%', backgroundColor: '#6e9de9' }}>
           <Image 
-            source={require('../../assets/images/instalodge-logo.png')}
+            source={require('../assets/images/instalodge-logo.png')}
             style={{ width: 200, height: 200 }}
           />
           <ActivityIndicator size="large" color='#bc6864'/>

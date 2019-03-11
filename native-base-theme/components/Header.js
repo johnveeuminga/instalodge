@@ -16,8 +16,8 @@ export default (variables /*: * */ = variable) => {
       },
       "NativeBase.Body": {
         alignSelf: "flex-end",
-        alignItems: "flex-start",
-        justifyContent: "center",
+        alignItems: "stretch",
+        justifyContent: "space-between",
         paddingBottom: 26
       },
       "NativeBase.Right": {

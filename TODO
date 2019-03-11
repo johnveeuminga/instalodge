@@ -9,6 +9,21 @@ Authentication:
     ✔ Add Loading Component for when the user is trying to login. @done(19-02-27 15:21)
   ☐ Logout functionality.
 
+Search:
+  ☐ Search UI
+    ☐ This can be based on the AirBnB app.
+  ✔ Integrate Algolia to app. @done(19-03-11 17:43)
+  ✘ Find out if there's a way where we can connect react redux to algolia. @cancelled(19-03-11 17:43)
+
+Property Single:
+  ☐ Property Single UI.
+
+Database:
+  ☐ Add property comment to database.
+
+Firebase Functions:
+  ☐ Only get the username for the user details when saving to Algolia.
+
 Seeding:
   ✔ Make a new Cloud callable function that uses Faker to seed data. @done (19-03-03 15:33)
   ✔ Make a new Node application that calls that function. @done (19-03-03 15:33)
