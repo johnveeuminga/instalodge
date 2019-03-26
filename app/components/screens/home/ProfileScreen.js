@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import FullScreenLoader from '../general/FullScreenLoader';
 import LogOutButton from '../../auth/LogOutButton';
 import material from '../../../../native-base-theme/variables/material';
+import { setIsHomeownerToTruePending } from '../../../auth';
+import { UPDATE_USER } from '../../../constants/actionTypes';
 
 class ProfileScreen extends Component {
   static navigationOptions = {
@@ -30,13 +32,15 @@ class ProfileScreen extends Component {
 
   }
 
-  onUpgradePressed () {
-    this.props.navigation.navigate('Upgrade');
+  async onUpgradePressed () {
+    const user = await setIsHomeownerToTruePending(this.props.user.uid);
+    this.props.setUser({user})
+    this.props.onUpgradePressed();
 	}
 
-	navigateToHome () {
-		this.toggleLoader();
-		this.props.navigation.navigate('Auth');
+	afterLogout () {
+    this.toggleLoader();
+    this.props.afterLogout();
 	}
 
   toggleLoader () {
@@ -57,6 +61,32 @@ class ProfileScreen extends Component {
 
   render () {
     const { user } = this.props;
+
+    const UpgradeButton = () => {
+
+      if (user.isRequestPending) {
+        return (
+          <Button
+            textStyle={{ fontWeight: 700 }}
+            disabled
+          >
+            <Text>Request still pending</Text>
+          </Button>
+        )
+      }
+
+      if (!user.homeOwner) {
+        return (
+          <Button
+            onPress={ () => this.onUpgradePressed() }
+            style={{ backgroundColor: material.brandSecondary }}
+            textStyle={{ fontWeight: 700 }}
+          >
+            <Text>Upgrade</Text>
+          </Button>
+        )
+      }
+    }
 
     return (
       <Container>
@@ -79,23 +109,15 @@ class ProfileScreen extends Component {
           >
             <Text style={{ color: '#fff', fontSize: 20 }}>{ user.name }</Text>
           </View>
-          {
-            !user.isHomeowner && 
-              <View
-                style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%'}}
-              >
-                <Button
-                  onPress={ () => this.onUpgradePressed() }
-                  style={{ backgroundColor: material.brandSecondary }}
-                  textStyle={{ fontWeight: 700 }}
-                >
-                  <Text>Upgrade to Homeowner</Text>
-								</Button>
-							</View>
-					}
+          <View style={{ display: 'flex', width: '100%', marginTop: 10, justifyContent: 'center', flexDirection: 'row' }}>
+            {
+              !user.isHomeowner &&
+                <UpgradeButton />
+            }
+          </View>
 					<View style={{ display: 'flex', width: '100%', marginTop: 10, justifyContent: 'center', flexDirection: 'row' }}>
 						<LogOutButton
-							afterLogout={() => this.navigateToHome()}	
+							afterLogout={() => this.afterLogout()}	
 							beforeLogout={() => this.toggleLoader()}
 						/>
 					</View>
@@ -111,4 +133,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, () => ({}))(ProfileScreen);
+const mapDispatchToProps = dispatch => ({
+  setUser: payload => {
+    dispatch({ type: UPDATE_USER, payload })
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);

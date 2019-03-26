@@ -3,8 +3,8 @@ import { ActivityIndicator, Image } from 'react-native'
 import { Container, Content, Text } from 'native-base';
 import { connect } from 'react-redux';
 
-import { LOGIN } from '../constants/actionTypes';
-import { getStoredUserUID, getUserFromUID } from '../auth';
+import { LOGIN, SET_USER_PROPERTY } from '../constants/actionTypes';
+import { getStoredUserUID, getUserFromUID, getUserProperty } from '../auth';
 
 class SplashScreen extends Component {
   static navigationOptions = {
@@ -21,8 +21,12 @@ class SplashScreen extends Component {
 
     if (user) {
       this.props.storeUserLoginDetails({user});
+      const userProperty = await getUserProperty(user.uid);
+      if (userProperty && userProperty.exists) {
+        this.props.setUserProperty({userProperty: userProperty.data()})
+      }
     }
-    
+
     this.props.navigation.navigate('Home');
   }
 
@@ -45,7 +49,11 @@ class SplashScreen extends Component {
 const mapDispatchToProps = dispatch => ({
   storeUserLoginDetails: payload => {
     dispatch({ type: LOGIN, payload });
-  }
+  },
+  setUserProperty: payload => {
+    dispatch({ type: SET_USER_PROPERTY, payload })
+  },
 });
 
 export default connect (() => ({}), mapDispatchToProps)(SplashScreen)
+  

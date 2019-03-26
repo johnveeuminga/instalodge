@@ -50,7 +50,7 @@ class SignInScreen extends Component {
       await storeUserUIDToStorage(user.uid);
       this.toggleLoader();
 
-      this.props.navigation.navigate(user.isHomeowner ? 'HomeOwner' : 'Home');
+      this.props.navigation.navigate('Home');
     } catch(err) {
       console.log(err)
     }

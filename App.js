@@ -9,11 +9,15 @@ import SplashScreen from './app/screens/SplashScreen';
 import HomeScreen from './app/screens/HomeScreen';
 import SignInScreen from './app/components/screens/auth/SignInScreen';
 import store from './app/store'
-import ProfileScreen from './app/components/screens/home/ProfileScreen';
-import ProfileUpgrade from './app/components/screens/home/ProfileUpgrade';
 import SearchScreen from './app/components/screens/home/SearchScreen';
-import UpgradeThankYou from './app/components/screens/upgrade/UpgradeThankYou';
-import PropertyFilterModal from './app/components/Property/PropertyFilterModal';
+import PropertyOverviewScreen from './app/screens/PropertyOverviewScreen';
+import PropertyDirectionsScreen from './app/screens/PropertyDirectionsScreen';
+import ProfileScreenContainer from './app/screens/ProfileScreenContainer';
+import UpgradeThankYou from './app/screens/UpgradeThankYou';
+import MyPropertyScreenContainer from './app/screens/MyPropertyScreenContainer';
+import PropertyOverviewCommentModal from './app/components/Property/PropertyOverview/PropertyOverviewCommentModal';
+import MyPropertyEditScreen from './app/screens/MyPropertyEditScreen';
+import MyPropertyAddScreen from './app/screens/MyPropertyAddScreen';
 
 const SplashScreenStack = createStackNavigator({
   Splash: SplashScreen
@@ -24,7 +28,8 @@ const AuthStack = createStackNavigator({
 } );
 
 const ProfileStack = createStackNavigator({
-  Profile: ProfileScreen,
+  Profile: ProfileScreenContainer,
+  ProfileThankYou: UpgradeThankYou,
 },
 {
   navigationOptions: () => ({
@@ -39,14 +44,39 @@ const ProfileStack = createStackNavigator({
     }
   })
 }
-)
+);
 
-const NewsFeedStack = createStackNavigator({
-  NewsFeedHome: HomeScreen,
-  Filters: PropertyFilterModal,
-},{
-  mode: 'modal',
-  headerMode: 'none',
+const PropertyOverviewStack = createStackNavigator({
+  PropertyOverviewMain: PropertyOverviewScreen,
+  PropertyOverviewComment: PropertyOverviewCommentModal,
+}, {
+  headerMode: 'null',
+});
+
+const HomeStack = createStackNavigator({
+  NewsFeed: HomeScreen,
+  PropertyOverview: PropertyOverviewStack,
+  PropertyDirections: PropertyDirectionsScreen,
+}, {
+  initialRouteName: 'NewsFeed',
+  navigationOptions: () => ({
+    tabBarIcon: ({ focused, horizontal, tintColor}) => {
+      return (
+        <Icon
+          name='paper'
+          style={{ color: tintColor }}
+          vertical={!horizontal}
+        />
+      );
+    }
+  })
+});
+
+const MyPropertiesStack = createStackNavigator({
+  MyProperties: MyPropertyScreenContainer,
+  MyPropertyEdit: MyPropertyEditScreen,
+  MyPropertyAdd: MyPropertyAddScreen,
+}, {
   navigationOptions: () => ({
     tabBarIcon: ({ focused, horizontal, tintColor}) => {
       return (
@@ -56,35 +86,27 @@ const NewsFeedStack = createStackNavigator({
           vertical={!horizontal}
         />
       );
-    }
+    },
+    title: 'My Property',
   })
-})
+});
 
-const defaultNavigationTabs = {
-  NewsFeed: NewsFeedStack,
-  Search: SearchScreen,
+
+
+const HomeBottomTab = createBottomTabNavigator({
+  Home: HomeStack,
+  MyPropertiesStack: MyPropertiesStack,
   Profile: ProfileStack,
-};
-
-
-const HomeBottomTab = createBottomTabNavigator(defaultNavigationTabs, {
-  initialRouteName: 'NewsFeed',
-});
-
-
-const UpgradeStack = createStackNavigator({
-  UpgradeProfile: ProfileUpgrade,
-  UpgradeThankYou: UpgradeThankYou,
 }, {
-  initialRouteName: 'UpgradeProfile',
+  initialRouteName: 'Home',
 });
+
 
 const AppContainer = createAppContainer(createSwitchNavigator(
   {
     Splash: SplashScreenStack,
     Auth: AuthStack,
     Home: HomeBottomTab,
-    Upgrade: UpgradeStack,
   },
   {
     initialRouteName: 'Splash',

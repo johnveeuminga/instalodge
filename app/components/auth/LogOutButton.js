@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, Text } from 'native-base';
 
 import { logout } from '../../auth';
+import { LOGOUT } from '../../constants/actionTypes';
 
-export default class LogOutButton extends Component {
+class LogOutButton extends Component {
 	async onLogoutPress () {
 		this.props.beforeLogout();
 		await logout();
+		this.props.logoutAction();
 		this.props.afterLogout();
 	}
 
@@ -21,4 +24,12 @@ export default class LogOutButton extends Component {
 		);
 	}
 }
+
+const mapDispatchToProps = dispatch => ({
+	logoutAction: () => {
+		dispatch({ type: LOGOUT });
+	}
+})
+
+export default connect(() => ({}), mapDispatchToProps)(LogOutButton);
 

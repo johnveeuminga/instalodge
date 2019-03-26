@@ -16,6 +16,10 @@ export default class IncrementDecrementInput extends Component {
 
   async incrementValue () {
     await this.setState((prevState) => {
+      if (prevState.value === this.props.maximumVal) {
+        console.log('Add');
+        return prevState
+      }
       return {
         value: prevState.value + 1,
       }
@@ -27,7 +31,9 @@ export default class IncrementDecrementInput extends Component {
   }
 
   async decrementValue () {
+    
     await this.setState((prevState) => {
+      if (prevState.value === 0) return prevState;
       return {
         value: prevState.value - 1,
       }
@@ -94,7 +100,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: 30,
     height: 30,
-    padding: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
     justifyContent: 'center',
   },
   buttonMargin: {

@@ -7,22 +7,42 @@ Authentication:
   ✔ Login Page UI. @done(19-02-27 15:21)
     ✔ Add icons for Google and Facebook Button. @done(19-02-27 13:48)
     ✔ Add Loading Component for when the user is trying to login. @done(19-02-27 15:21)
-  ☐ Logout functionality.
+  ✔ Logout functionality. @done(19-03-14 17:40)
 
 Search:
-  ☐ Search UI
-    ☐ This can be based on the AirBnB app.
+  ✔ Search UI @done(19-03-12 10:59)
+    ✔ This can be based on the AirBnB app. @done(19-03-12 10:59)
   ✔ Integrate Algolia to app. @done(19-03-11 17:43)
   ✘ Find out if there's a way where we can connect react redux to algolia. @cancelled(19-03-11 17:43)
+  ☐ Add a price filter. Maybe this is a slider.
+
+Property Form:
+  ✔ Connect property details form to Firebase. @done(19-03-17 16:30)
+  ✔ Implement photo editing. @done(19-03-17 13:30)
+  ✔ Implement photo adding. @done(19-03-17 12:41)
+  ✔ Implement photo deleting. @done(19-03-17 12:41)
+  ✔ Connect Property Photos to firebase. @done(19-03-17 12:48)
+  ✔ Implement photo set featured. @done(19-03-17 13:54)
+  ✔ Implement user choose location using react native autocomplete. @done(19-03-17 15:56)
+  ✔ Connect user choose location with firebase. @done(19-03-17 15:56)
 
 Property Single:
-  ☐ Property Single UI.
+  ✔ Adjust the size of the photos. @done(19-03-14 17:40)
+  ✔ Property Single UI. @done(19-03-14 17:40)
+  ✔ Add comments UI. @done(19-03-15 11:18)
+
+Comment:
+  ✔ Format date on save. @done(19-03-15 11:18)
+  ✔ Update average rating when a comment is saved. @done(19-03-15 19:51)
+
+Firebase Storage:
+  ✔ Use Firebase storage for the photos already. @done(19-03-14 17:40)
 
 Database:
-  ☐ Add property comment to database.
+  ✔ Add property comment to database. @done(19-03-14 17:40)
 
 Firebase Functions:
-  ☐ Only get the username for the user details when saving to Algolia.
+  ✔ Only get the username for the user details when saving to Algolia. @done(19-03-15 19:51)
 
 Seeding:
   ✔ Make a new Cloud callable function that uses Faker to seed data. @done (19-03-03 15:33)

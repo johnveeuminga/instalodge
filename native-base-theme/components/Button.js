@@ -7,7 +7,7 @@ export default (variables /*: * */ = variable) => {
   const platform = variables.platform;
   const darkCommon = {
     "NativeBase.Text": {
-      color: variables.brandDark
+      color: variables.brandDark,
     },
     "NativeBase.Icon": {
       color: variables.brandDark
@@ -29,7 +29,7 @@ export default (variables /*: * */ = variable) => {
   };
   const primaryCommon = {
     "NativeBase.Text": {
-      color: variables.btnPrimaryBg
+      color: '#fff',
     },
     "NativeBase.Icon": {
       color: variables.btnPrimaryBg
@@ -97,7 +97,7 @@ export default (variables /*: * */ = variable) => {
         }
       },
       "NativeBase.Icon": {
-        color: variables.brandLight
+        color: '#000'
       },
       "NativeBase.IconNB": {
         color: variables.brandLight
@@ -326,7 +326,7 @@ export default (variables /*: * */ = variable) => {
       fontFamily: variables.btnFontFamily,
       marginLeft: 0,
       marginRight: 0,
-      color: variables.inverseTextColor,
+      color: '#fff',
       fontSize: variables.btnTextSize,
       paddingHorizontal: 16,
       backgroundColor: "transparent"
@@ -382,7 +382,7 @@ export default (variables /*: * */ = variable) => {
     },
 
     paddingVertical: variables.buttonPadding,
-    // paddingHorizontal: variables.buttonPadding + 10,
+    paddingHorizontal: variables.buttonPadding + 10,
     backgroundColor: variables.btnPrimaryBg,
     borderRadius: variables.borderRadiusBase,
     borderColor: variables.btnPrimaryBg,

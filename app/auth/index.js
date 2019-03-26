@@ -72,14 +72,17 @@ async function updateUserDetails (firebaseUserCredential) {
 
     const firebaseUserDoc = await firebaseUserRef.get();
 
+    console.log(firebaseUserDoc);
+
     const userDetails = {
       uid: firebaseUserCredential.user.uid,
       name: firebaseUserCredential.user.displayName,
       email: firebaseUserCredential.user.email,
       photoURL: firebaseUserCredential.user.photoURL,
       phoneNumber: firebaseUserCredential.user.phoneNumber,
-      isHomeowner: firebaseUserCredential.user.isHomeowner ? true : false,
-      stripeId: firebaseUserCredential.user.stripeId ? firebaseUserCredential.user.stripeId : null,
+      isHomeowner: firebaseUserDoc.get('isHomeowner') ? true : false,
+      isRequestPending: firebaseUserDoc.get('isRequestPending') ? true : false,
+      stripeId: firebaseUserDoc.get('stripeId') ? firebaseUserDoc.get('stripeId') : null,
     }
 
     if (firebaseUserDoc.exists) {
@@ -185,7 +188,7 @@ export async function addStripeIDToUser (uid, stripeId) {
  * Changes the `isHomeowner` flag to true
  * 
  */
-export async function setIsHomeownerToTrue (uid) {
+export async function setIsHomeownerToTruePending (uid) {
   try {
     const userRef = await firebase.firestore().collection('users').doc(uid);
 
@@ -193,7 +196,8 @@ export async function setIsHomeownerToTrue (uid) {
     
     userRef.set({
       ...userDoc.data(),
-      isHomeowner: true,
+      isHomeowner: false,
+      isRequestPending: true,
     });
 
     const newUserDoc = await userRef.get();
@@ -201,5 +205,20 @@ export async function setIsHomeownerToTrue (uid) {
     return newUserDoc.data();
   } catch (err) {
     console.log(err)
+  }
+}
+
+export async function getUserProperty (uid) {
+  try {
+    const properties = await firebase.firestore().collection('properties').where(
+      'user_id',
+      '==',
+      uid
+    ).get();
+
+    return properties.empty ? [] : properties.docs[0];
+
+  } catch (err) {
+    console.log(err);
   }
 }

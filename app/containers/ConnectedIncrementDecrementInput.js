@@ -2,9 +2,8 @@ import React from 'react';
 import { connectRange } from 'react-instantsearch-native';
 import IncrementDecrementInput from '../components/general/Inputs/IncrementDecrementInput';
 
-const ConnectedIncrementDecrementInput = connectRange(({currentRefinement, refine, value, label, onChange}) => {
+const ConnectedIncrementDecrementInput = connectRange(({currentRefinement, refine, value, label, onChange, maximumVal = 9999 }) => {
   const onChangeProp = (value) => {
-    console.log(value);
     refine({ min: value, max: 9999 })
 
     if (onChange) {
@@ -17,6 +16,7 @@ const ConnectedIncrementDecrementInput = connectRange(({currentRefinement, refin
       value={value}
       label={label}
       onChange={(value) => onChangeProp(value)}
+      maximumVal={maximumVal}
     />
   )
 });
